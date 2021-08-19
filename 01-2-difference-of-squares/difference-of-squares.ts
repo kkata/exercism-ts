@@ -1,47 +1,24 @@
 class Squares {
-  size: number;
+  constructor(private size: number) {}
 
-  constructor(size: number) {
-    this.size = size;
+  calcSquareOfSum(num: number) {
+    return ((num * (num + 1)) / 2) ** 2;
   }
 
-  generateNumArr(): number[] {
-    const numArr = [];
-    for (let index = 1; index <= this.size; index++) {
-      numArr.push(index);
-    }
-    return numArr;
-  }
-
-  calcSquareOfSum(numArr: number[]): number {
-    let sam = 0;
-    numArr.forEach((num) => {
-      sam += num;
-    });
-    return sam * sam;
-  }
-
-  calcSumOfSquares(numArr: number[]): number {
-    let sam = 0;
-    numArr.forEach((num) => {
-      sam += num ** 2;
-    });
-    return sam;
+  calcSumOfSquares(num: number) {
+    return (num * (num + 1) * (2 * num + 1)) / 6;
   }
 
   get squareOfSum(): number {
-    const numArr = this.generateNumArr();
-    return this.calcSquareOfSum(numArr);
+    return this.calcSquareOfSum(this.size);
   }
 
   get sumOfSquares(): number {
-    const numArr = this.generateNumArr();
-    return this.calcSumOfSquares(numArr);
+    return this.calcSumOfSquares(this.size);
   }
 
   get difference(): number {
-    const numArr = this.generateNumArr();
-    return this.calcSquareOfSum(numArr) - this.calcSumOfSquares(numArr);
+    return this.calcSquareOfSum(this.size) - this.calcSumOfSquares(this.size);
   }
 }
 
